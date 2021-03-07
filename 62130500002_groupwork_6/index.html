@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Vue Js - HelloWorld App</title>
+
+    <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+    <!-- Using via Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- https://tailwindcss.com/docs/installation -->
+    <!-- Using Tailwind via CDN -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <form @submit.prevent="checkForm">
+            <div class="container w-2/5 p-8 mx-auto mt-10 border rounded-lg">
+                <div class="grid grid-cols-4">
+                    <img v-bind:src="image" class="rounded-full " width="100">
+                    <h1 class="text-2xl pt-4 pb-4">{{name}}</h1>
+                </div>
+                <h2 class="text-2xl pt-4 pb-4">Edit you profie</h2>
+                <div class="">
+                    <div class="flex flex-col">
+                        <label for="name" class="text-sm leading-7 text-gray-600">Name</label>
+                        <input type="text" id="name" v-model="formdata.name" name="name"
+                            class="bg-gray-100 rounded px-4 py-2 mb-4">
+                        <display-error :errors="errors" field="name"></display-error>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="username" class="text-sm leading-7 text-gray-600">Username</label>
+                        <input type="text" id="username" v-model="formdata.username" name="username"
+                            class="bg-gray-100 rounded px-4 py-2 mb-4">
+                        <display-error :errors="errors" field="username"></display-error>
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-sm leading-7 text-gray-600">Gender</label>
+                        <div class="flex flex-row pt-2 space-x-2">
+                            <input type="radio" id="Male" v-model="formdata.gender" name="gender" value="M"
+                                class="bg-gray-100 rounded px-4 py-2 mb-4">
+                            <label for="Male">Male</label>
+                            <input type="radio" id="Female" v-model="formdata.gender" name="gender" value="F"
+                                class="bg-gray-100 rounded px-4 py-2 mb-4">
+                            <label for="Female">Female</label>
+                            <input type="radio" id="Other" v-model="formdata.gender" name="gender" value="O"
+                            class="bg-gray-100 rounded px-4 py-2 mb-4">
+                        <label for="Male">Other</label>
+                        </div>
+                        <display-error :errors="errors" field="gender"></display-error>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="email" class="text-sm leading-7 text-gray-600">Email</label>
+                        <input type="text" id="email" v-model="formdata.email" name="email"
+                            class="bg-gray-100 rounded px-4 py-2 mb-4">
+                        <display-error :errors="errors" field="email"></display-error>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="phone" class="text-sm leading-7 text-gray-600">Phone Number</label>
+                        <input type="text" id="phone" v-model="formdata.phone" name="phone"
+                            class="bg-gray-100 rounded px-4 py-2 mb-4">
+                        <display-error :errors="errors" field="phone"></display-error>
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit"
+                            class="px-8 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- my main.js -->
+    <script src="./main.js"></script>
+</body>
+
+</html>
